@@ -11,12 +11,6 @@
  * @package    Kompas_Id_Footer
  * @subpackage Kompas_Id_Footer/admin/partials
  */
-
- if ( isset( $_GET['settings-updated'] ) ) {
- // add settings saved message with the class of "updated"
- add_settings_error( 'kompas-id-footer-updated', 'kompas-id-footer-updated', __( 'Perubahan berhasil disimpan', 'kompas-id-footer' ), 'updated' );
- }
- 
  
 ?>
 
@@ -28,21 +22,17 @@
         <p>Plugin ini masih dalam pengembangan</p>
     </div>
 
-    <?php // show error/update messages
-        settings_errors( 'kompas-id-footer-updated' );
-    ?>    
-
     <form method="post" action="options.php">  
     <?php settings_fields( 'kompas-id-footer-settings-group' ); ?>
     <?php do_settings_sections( 'kompas-id-footer-settings-group' ); ?>
         <table class="form-table">
             <tbody>
                 <tr>
-                    <th scope="row">Layanan Pelanggan</th>
+                    <th scope="row">Footer bagian Layanan Pelanggan</th>
                     <td>
                     	<fieldset>
                     	    <legend class="screen-reader-text">
-                    	        <span>Layanan Pelanggan</span>
+                    	        <span>Footer bagian Layanan Pelanggan</span>
                             </legend>
                     	<label>
                     	    <input type="radio" name="kompas_id_footer_general_layanan_pelanggan" value="on" <?php if ( esc_attr( get_option('kompas_id_footer_general_layanan_pelanggan') ) && get_option('kompas_id_footer_general_layanan_pelanggan')=="on") echo "checked";?>> <span class="date-time-text format-i18n">ON</span>
@@ -56,11 +46,11 @@
                 </tr>
                 
                 <tr>
-                    <th scope="row">KOMPAS ID Coorporate Footer</th>
+                    <th scope="row">Footer Korporasi</th>
                     <td>
                     	<fieldset>
                     	    <legend class="screen-reader-text">
-                    	        <span>General Footer</span>
+                    	        <span>Footer Korporasi</span>
                             </legend>
                     	<label>
                     	    <input type="radio" name="kompas_id_footer_general_status" value="on" <?php if (esc_attr( get_option('kompas_id_footer_general_status') ) && get_option('kompas_id_footer_general_status')=="on") echo "checked";?>> <span class="date-time-text format-i18n">ON</span>
@@ -74,10 +64,10 @@
                 </tr>
                 <tr>
                     <th scope="row">
-                        <label for="kompas_id_footer_right_hex_color">Right Side Background Color of General Footer</label>
+                        <label for="kompas_id_footer_right_hex_color">Warna Background Footer Korporasi bagian kanan</label>
                     </th>
                     <td>
-                        <input name="kompas_id_footer_right_hex_color" type="text" id="kompas_id_footer_right_hex_color" value="<?= esc_attr( get_option('kompas_id_footer_right_hex_color') ); ?>" class="regular-text">
+                        <input name="kompas_id_footer_right_hex_color" type="text" id="kompas_id_footer_right_hex_color" value="<?= esc_attr( get_option('kompas_id_footer_right_hex_color') ); ?>" class="regular-text" placeholder="Default: #00599A (Biru Kompas)">
                     </td>
                 </tr>
                 <?php if ( 1==2 ) : ?>

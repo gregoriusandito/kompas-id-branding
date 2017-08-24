@@ -122,7 +122,7 @@ class Kompas_Id_Footer_Admin {
 		$user_capabilities = $user->allcaps;
 		
 		if ( $user_capabilities['level_7'] ) :
-			add_menu_page('General Footer Settings', 'General Footer', 'administrator', __FILE__, array( $this, 'footer_menu_init') );			
+			add_options_page('General Footer Settings', 'General Footer', 'administrator', __FILE__, array( $this, 'footer_menu_init') );		
 		endif;
 	}	
 	

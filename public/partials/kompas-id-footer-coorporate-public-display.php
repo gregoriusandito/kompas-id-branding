@@ -1,6 +1,6 @@
 <?php 
 
-$footer_color = get_option('kompas_id_footer_right_hex_color') ? get_option('kompas_id_footer_right_hex_color') : '#00599a';
+$footer_color = get_option('kompas_id_footer_right_hex_color', '#00599a');
 
 ?>
 	<?php if ( get_option('kompas_id_footer_general_status') == "on" ) : ?>
