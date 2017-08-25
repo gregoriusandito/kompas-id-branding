@@ -1,7 +1,7 @@
 
 		<div class="page-footer-credit">
-			<div class="row font-sans">
-				<div class="small-12 columns clearfix page-footer-credit-wrapper">
+			<div class="kompas-row kompas-font-sans">
+				<div class="kompas-small-12 kompas-columns clearfix page-footer-credit-wrapper kompas-pad-left-15 kompas-pad-right-15 kompas-mobile-pad-left-right-0">
 					<span class="page-footer-credit-copy">&copy; <?php echo date('Y') ?> PT Kompas Media Nusantara</span>
                     <nav class="page-footer-credit-nav left">
                         <ul class="page-footer-credit-nav-list">

@@ -74,8 +74,6 @@ class Kompas_Id_Footer_Admin {
 		 * class.
 		 */
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/kompas-id-footer-admin.css', array(), time(), 'all' );
-		
-		// wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/kompas-id-footer-admin.css', array(), $this->version, 'all' );
 
 	}
 
@@ -97,8 +95,22 @@ class Kompas_Id_Footer_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/kompas-id-footer-admin.js', array( 'jquery' ), $this->version, false );
+		 
+		$dev_mode		=	strpos( get_home_url(), 'kompas-wp-multimedia.c9users.io' );
+		$root_static	=	$dev_mode ? get_template_directory_uri() : 'https://assets.kompas.id/wp-content/themes/mumed_kompas_dot_id_2016';
+		$theme			=	wp_get_theme();
+		
+	    wp_enqueue_script( 'kompas_id_cdn-vuejs', $root_static . '/assets/libs/vue/vue.js', array(), '2.3.4', true );
+	    
+		wp_enqueue_script( 
+			$this->plugin_name, 
+			plugin_dir_url( __FILE__ ) . 'js/kompas-id-footer-admin.js', 
+			array( 
+				'jquery', 
+				'kompas_id_cdn-vuejs', 
+			), 
+			time(), 
+			true );			
 
 	}
 	
@@ -107,16 +119,7 @@ class Kompas_Id_Footer_Admin {
 		//call register settings function
 		add_action( 'admin_init', array( $this, 'register_kompas_id_footer_settings') );		
 	}
-	
-	public function admin_init() {
-		
-	}
-	
-	public function footer_menu_init() {
-		
-		include_once plugin_dir_path( __FILE__ ) . '/partials/kompas-id-footer-admin-display.php';
-	}	
-	
+
 	public function add_sidebar_menu() {
 		$user = wp_get_current_user();
 		$user_capabilities = $user->allcaps;
@@ -126,6 +129,20 @@ class Kompas_Id_Footer_Admin {
 		endif;
 	}	
 	
+	public function footer_menu_init() {
+		include_once plugin_dir_path( __FILE__ ) . '/partials/kompas-id-footer-admin-display.php';
+	}	
+
+	public function get_json_footer_options() {
+		$options	=	array(
+								'footer_layanan_pelanggan'	=>	get_option('kompas_id_footer_general_layanan_pelanggan') ? get_option('kompas_id_footer_general_layanan_pelanggan') : 'off',
+								'footer_coorporate_status'	=>	get_option('kompas_id_footer_general_status') ? get_option('kompas_id_footer_general_status') : 'off',
+								'footer_coorporate_color'	=>	get_option('kompas_id_footer_right_hex_color') ? get_option('kompas_id_footer_right_hex_color') : '#00599A',
+						);
+		echo json_encode( $options );
+		wp_die();
+	}
+	
 	function register_kompas_id_footer_settings() {
 		//register our settings
 		register_setting( 'kompas-id-footer-settings-group', 'kompas_id_footer_general_layanan_pelanggan' );
@@ -133,5 +150,7 @@ class Kompas_Id_Footer_Admin {
 		register_setting( 'kompas-id-footer-settings-group', 'kompas_id_footer_right_hex_color' );
 		register_setting( 'kompas-id-footer-settings-group', 'kompas_id_footer_disable_subsite_theme_footer' );
 	}	
+	
+	
 
 }

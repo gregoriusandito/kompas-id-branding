@@ -154,6 +154,8 @@ class Kompas_Id_Footer {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		
+		$this->loader->add_action( 'wp_ajax_get_json_footer_options', $plugin_admin, 'get_json_footer_options' );
 
 	}
 
@@ -170,7 +172,7 @@ class Kompas_Id_Footer {
 		$plugin_public->kompas_id_footer_init();
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 	}
 
 	/**

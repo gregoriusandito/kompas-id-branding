@@ -1,6 +1,6 @@
 <?php 
 
-$footer_color = get_option('kompas_id_footer_right_hex_color', '#00599a');
+$footer_color = get_option('kompas_id_footer_right_hex_color') ? get_option('kompas_id_footer_right_hex_color') : '#00599a';
 
 ?>
 	<?php if ( get_option('kompas_id_footer_general_status') == "on" ) : ?>
@@ -10,24 +10,24 @@ $footer_color = get_option('kompas_id_footer_right_hex_color', '#00599a');
     background: -webkit-linear-gradient(left, #eee 0%, #eee 50%, <?= $footer_color ?> 50%, <?= $footer_color ?> 100%);
     background: linear-gradient(to right, #eeeeee 0%, #eeeeee 50%, <?= $footer_color ?> 50%, <?= $footer_color ?> 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='<?= $footer_color ?>',GradientType=1 );">
-	        <div class="row page-footer-profile-contents font-sans pr">
-	            <div class="large-10 columns page-footer-background-gray pad-top-40 pad-bottom-40">
-	                <div class="row">
-	                    <div class="large-12 medium-12 columns">
-	                        <div class="row">
-	                            <div class="medium-7 columns">
-	                                <div class="row">
-	                                    <div class="medium-6 small-12 columns mobile-pad-bottom-40">
+	        <div class="kompas-row kompas-page-footer-profile-contents kompas-font-sans kompas-position-relative">
+	            <div class="kompas-large-10 kompas-columns page-footer-background-gray kompas-pad-top-40 kompas-pad-bottom-40 kompas-profile-left">
+	                <div class="kompas-row">
+	                    <div class="kompas-large-12 kompas-medium-12 kompas-columns">
+	                        <div class="kompas-row">
+	                            <div class="kompas-medium-7 kompas-columns">
+	                                <div class="kompas-row">
+	                                    <div class="kompas-medium-6 kompas-columns kompas-mobile-pad-bottom-40 kompas-profile-left-inner">
 	                                    	<?php if ( $footer_custom_profile_text ) : ?>
-	                                            <div class="page-footer-profile-text">
+	                                            <div class="kompas-page-footer-profile-text">
 	                                            	<?php echo $footer_custom_profile_text ?>
 	                                            </div>
 	                                        <?php endif; ?>    
 	                                        <?php if ( $footer_custom_profile_social_accounts ) : ?>
-	                                            <div class="page-footer-profile-social-accounts new">
-	                                                <ul class="page-footer-profile-social-accounts-list">
+	                                            <div class="kompas-page-footer-profile-social-accounts new">
+	                                                <ul class="kompas-page-footer-profile-social-accounts-list">
 														<?php foreach( $footer_custom_profile_social_accounts as $social_account ) : ?>
-															<li class="page-footer-profile-social-accounts-item">
+															<li class="kompas-page-footer-profile-social-accounts-item new">
 																<a class="page-footer-profile-social-accounts-link" href="<?php echo $social_account['kompas_theme_footer_custom_social_account_url'] ?>" target="_blank" title="<?php echo $social_account['kompas_theme_footer_custom_social_account_name'] ?>">
 																	<i class="<?php echo $social_account['kompas_theme_footer_custom_social_account_css_class'] ?>" aria-hidden="true"></i>
 																</a>
@@ -37,8 +37,8 @@ $footer_color = get_option('kompas_id_footer_right_hex_color', '#00599a');
 	                                            </div>
 	                                        <?php endif; ?>    
 	                                    </div>
-	                                    <div class="large-6 medium-6 columns">
-	                                        <div class="page-footer-profile-container">
+	                                    <div class="kompas-large-6 kompas-medium-6 kompas-columns kompas-profile-left-inner">
+	                                        <div class="kompas-page-footer-profile-container">
 	                                            <dl>
 	                                            	<?php if ( $footer_custom_editorial_address ) : ?>
 	                                                    <dt class="page-footer-profile-def-term">Kantor Redaksi</dt>
@@ -93,9 +93,9 @@ $footer_color = get_option('kompas_id_footer_right_hex_color', '#00599a');
 	                                    </div>
 	                                </div>
 	                            </div>
-	                            <div class="medium-5 columns">
-	                                <div class="row">
-	                                    <div class="large-6 small-6 columns">
+	                            <div class="kompas-medium-5 kompas-columns">
+	                                <div class="kompas-row">
+	                                    <div class="kompas-large-6 kompas-small-6 kompas-columns">
 	                                        <dl>
 	                                        	<?php if ( $footer_custom_products ) : ?>
 	                                                <dt class="page-footer-profile-def-term">Produk</dt>
@@ -111,7 +111,7 @@ $footer_color = get_option('kompas_id_footer_right_hex_color', '#00599a');
 	                                            <?php endif; ?>
 	                                        </dl>
 	                                    </div>
-	                                    <div class="large-6 small-6 columns">
+	                                    <div class="kompas-large-6 kompas-small-6 kompas-columns">
 	                                        <dl>
 	                                        	<?php if ( $footer_custom_ads_products ) : ?>
 	                                                <dt class="page-footer-profile-def-term">Iklan</dt>
@@ -133,17 +133,17 @@ $footer_color = get_option('kompas_id_footer_right_hex_color', '#00599a');
 	                    </div>
 	                </div>
 	            </div>
-	            <div class="large-2 columns page-footer-background-royal-blue pad-20 pad-top-40 pad-bottom-40 pr" style="background-color: <?= $footer_color ?>;">
-	                <div class="row">
-	                    <div class="large-12 medium-12 columns">
+	            <div class="kompas-large-2 kompas-columns page-footer-background-royal-blue kompas-pad-20 kompas-pad-top-40 kompas-pad-bottom-40 kompas-position-relative" style="background-color: <?= $footer_color ?>;">
+	                <div class="kompas-row">
+	                    <div class="kompas-large-12 kompas-medium-12 kompas-columns">
 	                        <dl>
-	                            <dt class="page-footer-profile-def-term text-white">Tentang</dt>
+	                            <dt class="page-footer-profile-def-term kompas-text-white">Tentang</dt>
 	                            <dd class="page-footer-profile-def-description">
 	                                <div class="page-footer-profile-def-link">
 										<p>
 											<?php if ( $footer_custom_about_links ) : ?>
 												<?php foreach ( $footer_custom_about_links as $key => $about_link ) : ?>
-													<a class="text-white" href="<?php echo $about_link['kompas_theme_footer_about_repeater_url'] ?>" title="<?php echo $about_link['kompas_theme_footer_about_repeater_label'] ?>" target="_blank"><?php echo $about_link['kompas_theme_footer_about_repeater_label'] ?></a>
+													<a class="kompas-text-white" href="<?php echo $about_link['kompas_theme_footer_about_repeater_url'] ?>" title="<?php echo $about_link['kompas_theme_footer_about_repeater_label'] ?>" target="_blank"><?php echo $about_link['kompas_theme_footer_about_repeater_label'] ?></a>
 													<?php if ( $key < count( $footer_custom_about_links ) - 1 ) : ?>
 														<br>
 													<?php endif ?>
@@ -154,13 +154,13 @@ $footer_color = get_option('kompas_id_footer_right_hex_color', '#00599a');
 	                            </dd>
 	                        </dl>
 	                        <dl>
-	                            <dt class="page-footer-profile-def-term text-white">Lainnya</dt>
+	                            <dt class="page-footer-profile-def-term kompas-text-white">Lainnya</dt>
 	                            <dd class="page-footer-profile-def-description">
 	                                <div class="page-footer-profile-def-link">
 										<p>
 											<?php if ( $footer_custom_other_links ) : ?>
 												<?php foreach ( $footer_custom_other_links as $key => $other_link ) : ?>
-													<a class="text-white" href="<?php echo $other_link['kompas_theme_footer_about_repeater_url'] ?>" title="<?php echo $other_link['kompas_theme_footer_about_repeater_label'] ?>" target="_blank"><?php echo $other_link['kompas_theme_footer_about_repeater_label'] ?></a>
+													<a class="kompas-text-white" href="<?php echo $other_link['kompas_theme_footer_about_repeater_url'] ?>" title="<?php echo $other_link['kompas_theme_footer_about_repeater_label'] ?>" target="_blank"><?php echo $other_link['kompas_theme_footer_about_repeater_label'] ?></a>
 													<?php if ( $key < count( $footer_custom_other_links ) - 1 ) : ?>
 														<br>
 													<?php endif ?>
@@ -172,7 +172,7 @@ $footer_color = get_option('kompas_id_footer_right_hex_color', '#00599a');
 	                        </dl>
 	                    </div>
 	                </div>
-	                <div class="page-footer-logo"><a class="link-block text-center" href="<?= get_site_url() ?>" title="Harian Kompas"><img class="page-header-nameplate-logo-image" src="<?php echo get_template_directory_uri() ?>/assets/img/logos/logo_kompas_footer.png" ,="" alt="Harian Kompas"></a></div>
+	                <div class="page-footer-logo"><a class="kompas-link-block kompas-text-center" href="https://kompas.id" title="Harian Kompas"><img class="page-header-nameplate-logo-image" src="<?php echo plugin_dir_url(dirname(__FILE__)) ?>img/logos/logo_kompas_footer.png" alt="Harian Kompas"></a></div>
 	            </div>
 	        </div>
 	    </div>
