@@ -18,10 +18,6 @@
 
 <div class="wrap">
     <h1>Kompas ID General Footer Settings</h1>
-    <div class="error fade">
-        <p>Plugin ini masih dalam pengembangan</p>
-    </div>
-
     <form method="post" action="options.php">  
     <?php settings_fields( 'kompas-id-footer-settings-group' ); ?>
     <?php do_settings_sections( 'kompas-id-footer-settings-group' ); ?>

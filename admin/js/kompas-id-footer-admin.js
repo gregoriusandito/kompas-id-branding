@@ -28,7 +28,6 @@
 								_self.footer_layanan_pelanggan = data.footer_layanan_pelanggan;
 								_self.footer_coorporate_status = data.footer_coorporate_status;
 								_self.footer_coorporate_color = data.footer_coorporate_color;
-								console.log(data);
 							}
 						} );
 					},
@@ -109,7 +108,7 @@
 				                        <div style="width: 300px">
 				                        	<div :style="footer_layanan_pelanggan === 'on' ? 'display: block' : 'display: none' ">
 				                        		<div class="kompas-border-separator-bottom"></div>
-									            <div class="kompas-pad-bottom-10 kompas-pad-top-10">
+									            <div class="kompas-pad-bottom-10 kompas-pad-top-10" style="background: #fefefe">
 									                <div class="kompas-row kompas-font-sans">
 									                    <div class="kompas-large-12 kompas-medium-12 kompas-columns">
 									                        <div class="kompas-row kompas-pad-left-15 kompas-pad-right-15">
@@ -158,9 +157,9 @@
 						                                                    <p class="font-2">Mengusung semboyan "Amanat Hati Nurani Rakyat", Kompas dikenal sebagai sumber informasi tepercaya, akurat, dan mendalam.</p>
 							                                            </div>
 							                                            <div class="kompas-page-footer-profile-social-accounts new">
-							                                                <ul class="kompas-page-footer-profile-social-accounts-list">
-																				<li class="kompas-page-footer-profile-social-accounts-item new"><a class="page-footer-profile-social-accounts-link new font-2" href="#" target="_blank" title="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-						                                                        <li class="kompas-page-footer-profile-social-accounts-item new"><a class="page-footer-profile-social-accounts-link new font-2" href="#" target="_blank" title="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+							                                                <ul class="kompas-page-footer-profile-social-accounts-list inline-block margin-top-0">
+																				<li class="kompas-page-footer-profile-social-accounts-item new inline-block"><a class="page-footer-profile-social-accounts-link new font-2" href="#" target="_blank" title="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+						                                                        <li class="kompas-page-footer-profile-social-accounts-item new inline-block"><a class="page-footer-profile-social-accounts-link new font-2" href="#" target="_blank" title="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
 							                                                </ul>
 							                                            </div>
 								                                    </div>
@@ -212,7 +211,7 @@
 											            </div>
 											            <div class="grid__col grid__col--2-of-12 page-footer-background-royal-blue kompas-pad-20 kompas-pad-top-10 kompas-pad-bottom-10 kompas-position-relative" v-bind:style="{ background: footer_coorporate_color }">
 											                <div class="grid">
-											                    <div class="grid__col grid__col--12-of-12">
+											                    <div class="grid__col grid__col--12-of-12 kompas-right-side-footer-wrapper-margin">
 											                        <dl>
 											                            <dt class="page-footer-profile-def-term kompas-text-white font-2">Tentang</dt>
 											                            <dd class="page-footer-profile-def-description">
@@ -259,6 +258,11 @@
 								                        </nav>
 								                    </div>
 								                </div>
+								            </div>
+								            <div class="kompas-pad-top-10">
+								                <div class="notice fade">
+											        <p>Penampakan visual secara jelas dapat dilihat di halaman utama situs kompas.id</p>
+											    </div>
 								            </div>
 				                        </div>
 				                    </td>

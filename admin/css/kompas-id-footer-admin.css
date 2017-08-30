@@ -2005,6 +2005,20 @@ dl {
   padding-right: 0 !important;
 }
 
+.margin-top-0 {
+  margin-top: 0 !important;
+}
+
+.inline-block {
+  display: inline-block !important;
+}
+
+.kompas-right-side-footer-wrapper-margin {
+  margin-left: 0.5rem !important;
+  margin-right: 0 !important;
+  padding-left: 0;
+} 
+
 @media screen and (max-width: 1023px) { .kompas-padding-10-auto { padding: 0 10px; }
   .kompas-padding-15-auto { padding: 0 15px; }
   .kompas-large-10 { width: 100%; }
