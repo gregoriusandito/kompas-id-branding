@@ -106,16 +106,38 @@ class Kompas_Id_Footer_Public {
     	add_action( 'wp_footer', array ( __CLASS__, 'kompas_id_universal_init' ) );
 	}
 	
-	public function kompas_id_universal_init() {
-	    $api_url                =   'https://kompas.id/wp-json/wp/v2/footer';
-	    $footer_req             =   wp_remote_get( $api_url );
-	
-	    if( is_wp_error( $footer_req ) ) :
-	    	return false;
-	    endif;
-	
-	    $res = json_decode( wp_remote_retrieve_body( $footer_req ), true );
+	public static function kompas_id_universal_init() {
+		
+		$res				=	'';					
+	    $network_mode		=   strpos( get_home_url(), 'kompas.id' );
 	    
+	    //check if current site has relation with kompas.id
+	    if ( $network_mode ) : 
+			if ( is_multisite() ) :
+				//switch to kompas.id main site
+				//since we get cURL error 60 when using 'https://kompas.id/wp-json/wp/v2/footer' API (in kompas.id environment), better to use switch blog to get the data
+			    switch_to_blog( 1 );	    	
+			    
+			    //call the bucket
+				$res	=	function_exists('kompas_wp_api_get_footer') ? kompas_wp_api_get_footer() : null;	    
+				
+			    //restore to current site
+			    restore_current_blog();
+			endif;    
+	    else :
+	    	//this condition appear in case this plugin installed outside kompas.id environment
+	    	//consume API from 'https://kompas.id/wp-json/wp/v2/footer'
+		    $api_url                =   'https://kompas.id/wp-json/wp/v2/footer';
+		    $footer_req             =   wp_remote_get( $api_url );
+		
+		    if( is_wp_error( $footer_req ) ) :
+		    	return false;
+		    endif;
+		
+		    $res = json_decode( wp_remote_retrieve_body( $footer_req ), true );
+	    
+	    endif;	
+
 		$footer_custom_business_address 		= 	$res['footer_custom_business_address'] ? $res['footer_custom_business_address'] : null;
 		$footer_custom_business_phones			=	$res['footer_custom_business_phones'] ? $res['footer_custom_business_phones'] : null;
 		$footer_custom_editorial_address 		= 	$res['footer_custom_editorial_address'] ? $res['footer_custom_editorial_address'] : null;
