@@ -5,9 +5,17 @@
 	    <!-- START: PAGE FOOTER-CONTACT-->
 	    <div class="kompas-pad-bottom-30 kompas-pad-top-30" style="background-color: #fefefe">
 	        <?php if ( $footer_custom_support ) : ?>
-	            <div class="kompas-row kompas-font-sans">
+	            <div class="kompas-row kompas-font-sans"
+				<?php if ( $footer_width ) : ?>
+				    style="max-width: <?= $footer_width ?>px;"
+				<?php endif; ?>  
+				>
 	                <div class="kompas-large-12 kompas-medium-12 kompas-columns">
-	                    <div class="kompas-row kompas-pad-left-15 kompas-pad-right-15 kompas-mobile-pad-right-10 kompas-mobile-pad-left-10">
+	                    <div class="kompas-row kompas-pad-left-15 kompas-pad-right-15 kompas-mobile-pad-right-10 kompas-mobile-pad-left-10"
+						<?php if ( $footer_width ) : ?>
+						    style="max-width: <?= $footer_width ?>px;"
+						<?php endif; ?>  
+						>
 	                        <div class="kompas-large-3 kompas-medium-3 kompas-columns kompas-mobile-pad-bottom-20 kompas-padding-10-auto">
 	                            <div class="kompas-font-weight-400 kompas-line-height-2">
 	                            	<span class="kompas-font-weight-700">LAYANAN </span>PELANGGAN

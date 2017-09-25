@@ -115,6 +115,7 @@ class Kompas_Id_Footer_Admin {
 	}
 	
 	public function add_menu() {
+		//add sidebar menu admin
 		add_action( 'admin_menu', array( $this, 'add_sidebar_menu') );
 		//call register settings function
 		add_action( 'admin_init', array( $this, 'register_kompas_id_footer_settings') );		
@@ -130,14 +131,17 @@ class Kompas_Id_Footer_Admin {
 	}	
 	
 	public function footer_menu_init() {
+		//include template file 
 		include_once plugin_dir_path( __FILE__ ) . '/partials/kompas-id-footer-admin-display.php';
 	}	
 
 	public function get_json_footer_options() {
+		//send value to vue in json
 		$options	=	array(
 								'footer_layanan_pelanggan'	=>	get_option('kompas_id_footer_general_layanan_pelanggan') ? get_option('kompas_id_footer_general_layanan_pelanggan') : 'off',
 								'footer_coorporate_status'	=>	get_option('kompas_id_footer_general_status') ? get_option('kompas_id_footer_general_status') : 'off',
 								'footer_coorporate_color'	=>	get_option('kompas_id_footer_right_hex_color') ? get_option('kompas_id_footer_right_hex_color') : '#00599A',
+								'footer_width_value'		=>	get_option('kompas_id_footer_width') ? get_option('kompas_id_footer_width') : '1000',
 						);
 		echo json_encode( $options );
 		wp_die();
@@ -148,7 +152,7 @@ class Kompas_Id_Footer_Admin {
 		register_setting( 'kompas-id-footer-settings-group', 'kompas_id_footer_general_layanan_pelanggan' );
 		register_setting( 'kompas-id-footer-settings-group', 'kompas_id_footer_general_status' );
 		register_setting( 'kompas-id-footer-settings-group', 'kompas_id_footer_right_hex_color' );
-		register_setting( 'kompas-id-footer-settings-group', 'kompas_id_footer_disable_subsite_theme_footer' );
+		register_setting( 'kompas-id-footer-settings-group', 'kompas_id_footer_width' );
 	}	
 	
 	

@@ -9,6 +9,7 @@
 					footer_layanan_pelanggan : '',
 					footer_coorporate_status : '',
 					footer_coorporate_color : '',
+					footer_width_value : '',
 					layanan_pelanggan_picked: '',
 				},
 				mounted() {
@@ -28,6 +29,7 @@
 								_self.footer_layanan_pelanggan = data.footer_layanan_pelanggan;
 								_self.footer_coorporate_status = data.footer_coorporate_status;
 								_self.footer_coorporate_color = data.footer_coorporate_color;
+								_self.footer_width_value = data.footer_width_value;
 							}
 						} );
 					},
@@ -36,9 +38,6 @@
 					},
 					set_footer_coorporate_status(val) {
 						this.footer_coorporate_status = val;
-					},
-					set_video(key) {
-						
 					},
 
 				},
@@ -92,6 +91,14 @@
 				                    </th>
 				                    <td>
 				                        <input name="kompas_id_footer_right_hex_color" type="text" id="kompas_id_footer_right_hex_color" :value="footer_coorporate_color" class="regular-text" placeholder="Default: #00599A (Biru Kompas)" v-model="footer_coorporate_color">
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <th scope="row">
+				                        <label for="kompas_id_footer_width">Ukuran Lebar Footer</label>
+				                    </th>
+				                    <td>
+				                        <input name="kompas_id_footer_width" type="text" id="kompas_id_footer_width" :value="footer_width_value" class="regular-text" placeholder="Default: 1000px"> px
 				                    </td>
 				                </tr>
 				            </tbody>

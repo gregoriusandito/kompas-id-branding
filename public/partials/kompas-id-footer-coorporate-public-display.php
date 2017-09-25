@@ -1,16 +1,19 @@
-<?php 
-
-$footer_color = get_option('kompas_id_footer_right_hex_color') ? get_option('kompas_id_footer_right_hex_color') : '#00599a';
-
-?>
 	<?php if ( get_option('kompas_id_footer_general_status') == "on" ) : ?>
 	    <!-- START: PAGE FOOTER—PROFILE-->
-	    <div class="page-footer-gradient-background" style="background: #eee;
-    background: -moz-linear-gradient(left, #eee 0%, #eee 50%, <?= $footer_color ?> 50%, <?= $footer_color ?> 100%);
-    background: -webkit-linear-gradient(left, #eee 0%, #eee 50%, <?= $footer_color ?> 50%, <?= $footer_color ?> 100%);
-    background: linear-gradient(to right, #eeeeee 0%, #eeeeee 50%, <?= $footer_color ?> 50%, <?= $footer_color ?> 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='<?= $footer_color ?>',GradientType=1 );">
-	        <div class="kompas-row kompas-page-footer-profile-contents kompas-font-sans kompas-position-relative">
+	    <div class="page-footer-gradient-background" 
+	    <?php if ( $footer_color ) : ?>	
+		    style="background: #eee;
+		    	background: -moz-linear-gradient(left, #eee 0%, #eee 50%, <?= $footer_color ?> 50%, <?= $footer_color ?> 100%);
+		    	background: -webkit-linear-gradient(left, #eee 0%, #eee 50%, <?= $footer_color ?> 50%, <?= $footer_color ?> 100%);
+		    	background: linear-gradient(to right, #eeeeee 0%, #eeeeee 50%, <?= $footer_color ?> 50%, <?= $footer_color ?> 100%);
+		    	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='<?= $footer_color ?>',GradientType=1 );"
+		 <?php endif; ?>
+		 >
+	        <div class="kompas-row kompas-page-footer-profile-contents kompas-font-sans kompas-position-relative"
+			<?php if ( $footer_width ) : ?>
+			    style="max-width: <?= $footer_width ?>px;"
+			<?php endif; ?>  
+			>
 	            <div class="kompas-large-10 kompas-columns page-footer-background-gray kompas-pad-top-40 kompas-pad-bottom-40 kompas-profile-left">
 	                <div class="kompas-row">
 	                    <div class="kompas-large-12 kompas-medium-12 kompas-columns">

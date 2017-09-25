@@ -107,7 +107,6 @@ class Kompas_Id_Footer_Public {
 	}
 	
 	public static function kompas_id_universal_init() {
-		
 		$res				=	'';					
 	    $network_mode		=   strpos( get_home_url(), 'kompas.id' );
 	    
@@ -155,6 +154,9 @@ class Kompas_Id_Footer_Public {
 		$footer_custom_support_office_hour		=	$footer_custom_support ? $footer_custom_support[0]['kompas_theme_footer_custom_supports_office_hour'] : null; 	
 		$footer_custom_universal_left 			= 	$res['footer_custom_universal_left'] ? $res['footer_custom_universal_left'] : null;
 		$footer_custom_universal_right			=	$res['footer_custom_universal_right'] ? $res['footer_custom_business_right'] : null;
+		
+		$footer_color	=	get_option('kompas_id_footer_right_hex_color') ? get_option('kompas_id_footer_right_hex_color') : '';
+		$footer_width	=	get_option('kompas_id_footer_width') ? get_option('kompas_id_footer_width') : '';
 		
 		include_once plugin_dir_path( __FILE__ ) . 'partials/kompas-id-footer-layanan-pelanggan-public-display.php';
 		include_once plugin_dir_path( __FILE__ ) . 'partials/kompas-id-footer-coorporate-public-display.php';
