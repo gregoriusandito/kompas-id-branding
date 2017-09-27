@@ -153,7 +153,7 @@ class Kompas_Id_Footer_Public {
 		$footer_custom_support_whatsapp			=	$footer_custom_support ? $footer_custom_support[0]['kompas_theme_footer_custom_supports_whatsapp'] : null;
 		$footer_custom_support_office_hour		=	$footer_custom_support ? $footer_custom_support[0]['kompas_theme_footer_custom_supports_office_hour'] : null; 	
 		$footer_custom_universal_left 			= 	$res['footer_custom_universal_left'] ? $res['footer_custom_universal_left'] : null;
-		$footer_custom_universal_right			=	$res['footer_custom_universal_right'] ? $res['footer_custom_business_right'] : null;
+		$footer_custom_universal_right			=	$res['footer_custom_universal_right'] ? $res['footer_custom_universal_right'] : null;
 		
 		$footer_color	=	get_option('kompas_id_footer_right_hex_color') ? get_option('kompas_id_footer_right_hex_color') : '';
 		$footer_width	=	get_option('kompas_id_footer_width') ? get_option('kompas_id_footer_width') : '';
