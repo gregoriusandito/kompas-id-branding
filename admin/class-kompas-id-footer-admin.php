@@ -122,12 +122,7 @@ class Kompas_Id_Footer_Admin {
 	}
 
 	public function add_sidebar_menu() {
-		$user = wp_get_current_user();
-		$user_capabilities = $user->allcaps;
-		
-		if ( $user_capabilities['level_7'] ) :
-			add_options_page('General Footer Settings', 'General Footer', 'administrator', __FILE__, array( $this, 'footer_menu_init') );		
-		endif;
+		add_options_page('General Footer Settings', 'General Footer', 'administrator', __FILE__, array( $this, 'footer_menu_init') );		
 	}	
 	
 	public function footer_menu_init() {

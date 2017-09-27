@@ -95,10 +95,10 @@
 				                </tr>
 				                <tr>
 				                    <th scope="row">
-				                        <label for="kompas_id_footer_width">Ukuran Lebar Footer</label>
+				                        <label for="kompas_id_footer_width">Ukuran Lebar Footer (dalam px)</label>
 				                    </th>
 				                    <td>
-				                        <input name="kompas_id_footer_width" type="text" id="kompas_id_footer_width" :value="footer_width_value" class="regular-text" placeholder="Default: 1000px"> px
+				                        <input name="kompas_id_footer_width" type="text" id="kompas_id_footer_width" :value="footer_width_value" class="regular-text" placeholder="Default: 1000px">
 				                    </td>
 				                </tr>
 				            </tbody>
