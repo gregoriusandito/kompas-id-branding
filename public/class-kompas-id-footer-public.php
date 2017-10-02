@@ -107,54 +107,54 @@ class Kompas_Id_Footer_Public {
 	}
 	
 	public static function kompas_id_universal_init() {
-		$res				=	'';					
-	    $network_mode		=   strpos( get_home_url(), 'kompas.id' );
-	    
-	    //check if current site has relation with kompas.id
-	    if ( $network_mode ) : 
-			if ( is_multisite() ) :
-				//switch to kompas.id main site
-				//since we get cURL error 60 when using 'https://kompas.id/wp-json/wp/v2/footer' API (in kompas.id environment), better to use switch blog to get the data
-			    switch_to_blog( 1 );	    	
-			    
-			    //call the bucket
-				$res	=	function_exists('kompas_wp_api_get_footer') ? kompas_wp_api_get_footer() : null;	    
-				
-			    //restore to current site
-			    restore_current_blog();
-			endif;    
-	    else :
-	    	//this condition appear in case this plugin installed outside kompas.id environment
-	    	//consume API from 'https://kompas.id/wp-json/wp/v2/footer'
-		    $api_url                =   'https://kompas.id/wp-json/wp/v2/footer';
-		    $footer_req             =   wp_remote_get( $api_url );
-		
-		    if( is_wp_error( $footer_req ) ) :
-		    	return false;
-		    endif;
-		
-		    $res = json_decode( wp_remote_retrieve_body( $footer_req ), true );
-	    
-	    endif;	
+        $raw_data   	=   self::get_options_raw_data();
 
-		$footer_custom_business_address 		= 	$res['footer_custom_business_address'] ? $res['footer_custom_business_address'] : null;
-		$footer_custom_business_phones			=	$res['footer_custom_business_phones'] ? $res['footer_custom_business_phones'] : null;
-		$footer_custom_editorial_address 		= 	$res['footer_custom_editorial_address'] ? $res['footer_custom_editorial_address'] : null;
-		$footer_custom_editorial_phones			=	$res['footer_custom_editorial_phones'] ? $res['footer_custom_editorial_phones'] : null;
-		$footer_custom_products					= 	$res['footer_custom_products'] ? $res['footer_custom_products'] : null;
-		$footer_custom_ads_products				= 	$res['footer_custom_ads_products'] ? $res['footer_custom_ads_products'] : null;
-		$footer_custom_profile_text 			=	$res['footer_custom_profile_text'] ? $res['footer_custom_profile_text'] : null;
-		$footer_custom_profile_social_accounts	=	$res['footer_custom_profile_social_accounts'] ? $res['footer_custom_profile_social_accounts'] : null;
-		$footer_custom_about_links 				=	$res['footer_custom_about_links'] ? $res['footer_custom_about_links'] : null;
-		$footer_custom_other_links 				=	$res['footer_custom_other_links'] ? $res['footer_custom_other_links'] : null;
-		$footer_custom_support					=	$res['footer_custom_support'] ? $res['footer_custom_support'] : null;
+		$options_name	=	array(
+			    				'options_kompas_theme_footer_custom_ads_products',  //2
+			    				'options_kompas_theme_footer_custom_business_phone_numbers', //2
+			    				'options_kompas_theme_footer_custom_editorial_phone_numbers', //4
+			    				'options_kompas_theme_footer_custom_products', //2
+			    				'options_kompas_theme_footer_custom_social_accounts', //4
+			    				'options_kompas_theme_footer_custom_supports', //1
+			    				'options_kompas_theme_footer_left_footer_content', //5
+			    				'options_kompas_theme_footer_right_footer_content', //3
+		    				);
+		    				
+		$options_number_of_value		=	self::get_all_options_number_of_value( $raw_data, $options_name );		
+		
+		$others_number_of_value			=	self::get_all_options_number_of_value( $raw_data, array('options_kompas_theme_footer_custom_others', 'options_kompas_theme_footer_custom_about') );
+
+		$footer_custom_support_elements	=	array(
+												'kompas_theme_footer_custom_supports_email', 
+												'kompas_theme_footer_custom_supports_office_hour', 
+												'kompas_theme_footer_custom_supports_telephone', 
+												'kompas_theme_footer_custom_supports_whatsapp',
+											);
+											
+		$footer_custom_profile_social_accounts_elements	=	array(
+																'kompas_theme_footer_custom_social_account_css_class', 
+																'kompas_theme_footer_custom_social_account_name', 
+																'kompas_theme_footer_custom_social_account_url', 
+															);											
+		
+		$footer_custom_about_links 				=	self::get_profile_custom_about_content( $raw_data, 'kompas_theme_footer_custom_about', (int) $others_number_of_value[0] );
+		$footer_custom_other_links 				=	self::get_profile_custom_about_content( $raw_data, 'kompas_theme_footer_custom_others', (int) $others_number_of_value[1] );		
+		$footer_custom_business_address 		= 	wpautop( self::get_profile_text_footer_content( $raw_data, 'kompas_theme_footer_custom_business_address' ) );
+		$footer_custom_business_phones			=	self::get_profile_custom_telephones_content( $raw_data, 'kompas_theme_footer_custom_business_phone_number', (int) $options_number_of_value[1] );
+		$footer_custom_editorial_address		=	wpautop( self::get_profile_text_footer_content( $raw_data, 'kompas_theme_footer_custom_editorial_address' ) );
+		$footer_custom_editorial_phones			=	self::get_profile_custom_telephones_content( $raw_data, 'kompas_theme_footer_custom_editorial_phone_number', (int) $options_number_of_value[2] );
+		$footer_custom_products					=	self::get_profile_custom_product_content( $raw_data, array('kompas_theme_footer_custom_product_name', 'kompas_theme_footer_custom_product_url'), (int) $options_number_of_value[3] );
+		$footer_custom_ads_products				=	self::get_profile_custom_product_content( $raw_data, array('kompas_theme_footer_custom_ads_product_name', 'kompas_theme_footer_custom_ads_product_url'), (int) $options_number_of_value[0] );
+		$footer_custom_profile_text				=	wpautop( self::get_profile_text_footer_content( $raw_data, 'kompas_theme_footer_custom_profile_text' ) );
+		$footer_custom_profile_social_accounts	=	self::get_profile_social_footer_content( $raw_data, $footer_custom_profile_social_accounts_elements, (int) $options_number_of_value[4] );
+		$footer_custom_support					=	self::get_supports_footer_content( $raw_data, $footer_custom_support_elements, (int) $options_number_of_value[5] );
 		$footer_custom_support_email			=	$footer_custom_support ? $footer_custom_support[0]['kompas_theme_footer_custom_supports_email'] : null;
 		$footer_custom_support_telephone		=	$footer_custom_support ? $footer_custom_support[0]['kompas_theme_footer_custom_supports_telephone'] : null;
 		$footer_custom_support_whatsapp			=	$footer_custom_support ? $footer_custom_support[0]['kompas_theme_footer_custom_supports_whatsapp'] : null;
-		$footer_custom_support_office_hour		=	$footer_custom_support ? $footer_custom_support[0]['kompas_theme_footer_custom_supports_office_hour'] : null; 	
-		$footer_custom_universal_left 			= 	$res['footer_custom_universal_left'] ? $res['footer_custom_universal_left'] : null;
-		$footer_custom_universal_right			=	$res['footer_custom_universal_right'] ? $res['footer_custom_universal_right'] : null;
-		
+		$footer_custom_support_office_hour		=	$footer_custom_support ? $footer_custom_support[0]['kompas_theme_footer_custom_supports_office_hour'] : null; 		
+		$footer_custom_universal_left			=	self::get_universal_footer_content( $raw_data, array('kompas_theme_footer_left_footer_content_name', 'kompas_theme_footer_left_footer_content_url'), (int) $options_number_of_value[6] );	
+		$footer_custom_universal_right			=	self::get_universal_footer_content( $raw_data, array('kompas_theme_footer_right_footer_content_name', 'kompas_theme_footer_right_footer_content_url'), (int) $options_number_of_value[7] );
+
 		$footer_color	=	get_option('kompas_id_footer_right_hex_color') ? get_option('kompas_id_footer_right_hex_color') : '';
 		$footer_width	=	get_option('kompas_id_footer_width') ? get_option('kompas_id_footer_width') : '';
 		
@@ -162,5 +162,219 @@ class Kompas_Id_Footer_Public {
 		include_once plugin_dir_path( __FILE__ ) . 'partials/kompas-id-footer-coorporate-public-display.php';
 		include_once plugin_dir_path( __FILE__ ) . 'partials/kompas-id-footer-universal-public-display.php';
 	}	
+	
+	private function get_options_raw_data() {
+		global $wpdb;
+        
+        $main_db = $wpdb->base_prefix.'options';
+        
+        $main_query		=	"SELECT * FROM $main_db op
+        					WHERE op.option_name LIKE 'options_kompas_theme_footer%' 
+        					AND op.option_name NOT LIKE '%options_kompas_theme_footer_custom_board_members%' 
+        					ORDER BY op.option_name ASC
+        				";
+        				
+        return $wpdb->get_results( $main_query );		
+	}
+	
+	private function get_all_options_number_of_value( $raw_data, $options_name = array() ) {
+		foreach( $raw_data as $data ) :
+			if( in_array( $data->option_name, $options_name ) ) :
+				$options_value[]	=	$data->option_value;
+			endif;
+		endforeach;
+		
+		return $options_value;
+	}
 
+	private function get_universal_footer_content( $raw_data, $matches = array(), $number_of_elements ) {
+        $footer_custom_universal_name	=	array();
+        $footer_custom_universal_url	=	array();		
+        $footer_custom_universal		=	array();
+		
+		foreach ( $raw_data as $footer_data ) :
+			if ( strpos( $footer_data->option_name, $matches[0] ) ) :
+				array_push( $footer_custom_universal_name, $footer_data->option_value );				
+			endif;	
+		endforeach;	        
+
+		foreach ( $raw_data as $footer_data ) :
+			if ( strpos( $footer_data->option_name, $matches[1] ) ) :
+				array_push( $footer_custom_universal_url, $footer_data->option_value );				
+			endif;	
+		endforeach;			
+		
+		for ( $i = 0; $i < (int) $number_of_elements; $i++ ) :
+			$footer_custom_universal[]	=	array(
+												$matches[0]	=>	$footer_custom_universal_name[$i],
+												$matches[1]	=>	$footer_custom_universal_url[$i],
+											);																					
+		endfor;	
+		
+		return $footer_custom_universal;
+	}
+
+	private function get_supports_footer_content( $raw_data, $matches = array(), $number_of_elements ) {
+        $footer_custom_supports_email		=	array();
+        $footer_custom_supports_office_hour	=	array();
+        $footer_custom_supports_telephone	=	array();
+        $footer_custom_supports_whatsapp	=	array();
+        $footer_custom_supports				=	array();
+		
+		foreach ( $raw_data as $footer_data ) :
+			if ( strpos( $footer_data->option_name, $matches[1] ) ) :
+				array_push( $footer_custom_supports_office_hour, $footer_data->option_value );				
+			endif;	
+		endforeach;	        
+
+		foreach ( $raw_data as $footer_data ) :
+			if ( strpos( $footer_data->option_name, $matches[0] ) ) :
+				array_push( $footer_custom_supports_email, $footer_data->option_value );				
+			endif;	
+		endforeach;			
+
+		foreach ( $raw_data as $footer_data ) :
+			if ( strpos( $footer_data->option_name, $matches[2] ) ) :
+				array_push( $footer_custom_supports_telephone, $footer_data->option_value );				
+			endif;	
+		endforeach;	        
+
+		foreach ( $raw_data as $footer_data ) :
+			if ( strpos( $footer_data->option_name, $matches[3] ) ) :
+				array_push( $footer_custom_supports_whatsapp, $footer_data->option_value );				
+			endif;	
+		endforeach;					
+		
+		for ( $i = 0; $i < (int) $number_of_elements; $i++ ) :
+			$footer_custom_supports[]	=	array(
+												$matches[2]	=>	$footer_custom_supports_telephone[$i],
+												$matches[3]	=>	$footer_custom_supports_whatsapp[$i],
+												$matches[0]	=>	$footer_custom_supports_email[$i],
+												$matches[1]	=>	$footer_custom_supports_office_hour[$i],
+											);																					
+		endfor;	
+		
+		return $footer_custom_supports;
+	}
+	
+	private function get_profile_social_footer_content( $raw_data, $matches = array(), $number_of_elements ) {
+        $footer_custom_social_account_css_class		=	array();
+        $footer_custom_social_account_name			=	array();
+        $footer_custom_social_account_url			=	array();
+        $footer_custom_social						=	array();
+		
+		foreach ( $raw_data as $footer_data ) :
+			if ( strpos( $footer_data->option_name, $matches[0] ) ) :
+				array_push( $footer_custom_social_account_css_class, $footer_data->option_value );				
+			endif;	
+		endforeach;	        
+
+		foreach ( $raw_data as $footer_data ) :
+			if ( strpos( $footer_data->option_name, $matches[1] ) ) :
+				array_push( $footer_custom_social_account_name, $footer_data->option_value );				
+			endif;	
+		endforeach;			
+
+		foreach ( $raw_data as $footer_data ) :
+			if ( strpos( $footer_data->option_name, $matches[2] ) ) :
+				array_push( $footer_custom_social_account_url, $footer_data->option_value );				
+			endif;	
+		endforeach;	        
+
+		for ( $i = 0; $i < (int) $number_of_elements; $i++ ) :
+			$footer_custom_social[]	=	array(
+												$matches[0]	=>	$footer_custom_social_account_css_class[$i],
+												$matches[1]	=>	$footer_custom_social_account_name[$i],
+												$matches[2]	=>	$footer_custom_social_account_url[$i],
+											);																					
+		endfor;	
+		
+		return $footer_custom_social;
+	}
+
+	private function get_profile_text_footer_content( $raw_data, $matches ) {
+		foreach ( $raw_data as $footer_data ) :
+			if ( strpos( $footer_data->option_name, $matches ) ) :
+				$footer_custom_profile_text	=	$footer_data->option_value;
+			endif;	
+		endforeach;			
+		
+		return $footer_custom_profile_text;
+	}
+	
+	private function get_profile_custom_product_content ( $raw_data, $matches = array(), $number_of_elements ) {
+        $footer_custom_product_name	=	array();
+        $footer_custom_product_url	=	array();		
+        $footer_custom_product		=	array();
+		
+		foreach ( $raw_data as $footer_data ) :
+			if ( strpos( $footer_data->option_name, $matches[0] ) ) :
+				array_push( $footer_custom_product_name, $footer_data->option_value );				
+			endif;	
+		endforeach;	        
+
+		foreach ( $raw_data as $footer_data ) :
+			if ( strpos( $footer_data->option_name, $matches[1] ) ) :
+				array_push( $footer_custom_product_url, $footer_data->option_value );				
+			endif;	
+		endforeach;			
+		
+		for ( $i = 0; $i < (int) $number_of_elements; $i++ ) :
+			$footer_custom_product[]	=	array(
+												$matches[0]	=>	$footer_custom_product_name[$i],
+												$matches[1]	=>	$footer_custom_product_url[$i],
+											);																					
+		endfor;	
+		
+		return $footer_custom_product;
+		
+	}
+	
+	private function get_profile_custom_telephones_content ( $raw_data, $matches, $number_of_elements ) {
+        $footer_custom_telephone	=	array();
+        $footer_custom_telephones	=	array();
+		
+		foreach ( $raw_data as $footer_data ) :
+			if ( strpos( $footer_data->option_name, $matches ) && ( strlen($footer_data->option_value) > 5 ) ) :
+				array_push( $footer_custom_telephone, $footer_data->option_value );				
+			endif;	
+		endforeach;	        
+
+		for ( $i = 0; $i < (int) $number_of_elements; $i++ ) :
+			$footer_custom_telephones[]	=	array(
+												$matches	=>	$footer_custom_telephone[$i],
+											);																					
+		endfor;	
+		
+		return $footer_custom_telephones;
+		
+	}
+	
+	private function get_profile_custom_about_content ( $raw_data, $matches, $number_of_elements ) {
+		$footer_custom_about_name = array();
+		$footer_custom_about_url = array();
+		$footer_custom_about = array();
+		
+		foreach ( $raw_data as $footer_data ) :
+			if ( strpos( $footer_data->option_name, 'kompas_theme_footer_about_repeater_label' ) && strpos( $footer_data->option_name, $matches ) ) :
+				array_push( $footer_custom_about_name, $footer_data->option_value );				
+			endif;	
+		endforeach;	        
+
+		foreach ( $raw_data as $footer_data ) :
+			if ( strpos( $footer_data->option_name, 'kompas_theme_footer_about_repeater_url' ) && strpos( $footer_data->option_name, $matches ) ) :
+				array_push( $footer_custom_about_url, $footer_data->option_value );				
+			endif;	
+		endforeach;			
+		
+		for ( $i = 0; $i < (int) $number_of_elements; $i++ ) :
+			$footer_custom_about[]	=	array(
+												'kompas_theme_footer_about_repeater_label'	=>	$footer_custom_about_name[$i],
+												'kompas_theme_footer_about_repeater_url'	=>	$footer_custom_about_url[$i],
+											);						
+		endfor;			
+		
+		return $footer_custom_about;
+	}
+	
 }
