@@ -110,14 +110,14 @@ class Kompas_Id_Footer_Public {
         $raw_data   	=   self::get_options_raw_data();
 
 		$options_name	=	array(
-			    				'options_kompas_theme_footer_custom_ads_products',  //2
-			    				'options_kompas_theme_footer_custom_business_phone_numbers', //2
-			    				'options_kompas_theme_footer_custom_editorial_phone_numbers', //4
-			    				'options_kompas_theme_footer_custom_products', //2
-			    				'options_kompas_theme_footer_custom_social_accounts', //4
-			    				'options_kompas_theme_footer_custom_supports', //1
-			    				'options_kompas_theme_footer_left_footer_content', //5
-			    				'options_kompas_theme_footer_right_footer_content', //3
+			    				'options_kompas_theme_footer_custom_ads_products',
+			    				'options_kompas_theme_footer_custom_business_phone_numbers',
+			    				'options_kompas_theme_footer_custom_editorial_phone_numbers',
+			    				'options_kompas_theme_footer_custom_products',
+			    				'options_kompas_theme_footer_custom_social_accounts',
+			    				'options_kompas_theme_footer_custom_supports',
+			    				'options_kompas_theme_footer_left_footer_content',
+			    				'options_kompas_theme_footer_right_footer_content',
 		    				);
 		    				
 		$options_number_of_value		=	self::get_all_options_number_of_value( $raw_data, $options_name );		
