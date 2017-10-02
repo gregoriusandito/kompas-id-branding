@@ -1460,6 +1460,8 @@
 
 .page-footer-gradient-background { background: #eee; /* Old browsers */ background: -moz-linear-gradient(left, #eee 0%, #eee 50%, #00599A 50%, #00599A 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(left, #eee 0%, #eee 50%, #00599A 50%, #00599A 100%); /* Chrome10-25,Safari5.1-6 */ background: linear-gradient(to right, #eeeeee 0%, #eeeeee 50%, #00599a 50%, #00599a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#00599a',GradientType=1 ); /* IE6-9 */ }
 
+.new-page-footer-gradient-background { background: #eee; /* Old browsers */ /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */ background: -webkit-linear-gradient(left, #eeeeee 0%, #eeeeee 70%, #00599a 70%, #00599a 100%); background: -moz-linear-gradient(left, #eeeeee 0%, #eeeeee 70%, #00599a 70%, #00599a 100%); background: -o-linear-gradient(left, #eeeeee 0%, #eeeeee 70%, #00599a 70%, #00599a 100%); background: linear-gradient(to right, #eeeeee 0%, #eeeeee 70%, #00599a 70%, #00599a 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#00599a',GradientType=1 ); /* IE6-9 */ }
+
 .page-footer-profile-contents p { font-size: 0.75rem; line-height: 17.76px; }
 
 .page-footer-profile-logo { width: 11.25rem; }
@@ -1507,7 +1509,7 @@
 .page-footer-profile-text { color: #666; font-size: 0.8125rem; line-height: 16.9px; }
 
 .page-footer-logo { position: absolute; bottom: 3.125rem; }
-.page-footer-logo img { max-height: 2.8125rem; }
+.page-footer-logo img { height: 2.8125rem; }
 
 .page-footer-cs-term { display: block; font-weight: 700; text-transform: uppercase; -moz-transition: color 0.25s; -o-transition: color 0.25s; -webkit-transition: color 0.25s; transition: color 0.25s; }
 @media screen and (max-width: 39.9375em) { .page-footer-cs-term { font-size: 0.875rem; } }
@@ -1520,6 +1522,8 @@
 .kompas-border-separator-bottom { border-bottom: solid thin #ddd; }
 
 .kompas-text-gray { color: #666 !important; }
+
+.kompas-footer-logo-height { height: 2.8125rem; }
 
 .kompas-v-align-middle { vertical-align: middle; }
 

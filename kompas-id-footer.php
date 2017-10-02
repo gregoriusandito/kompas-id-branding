@@ -13,9 +13,9 @@
  * @package           kompas-id-footer
  *
  * @wordpress-plugin
- * Plugin Name:       Kompas ID General Footer
+ * Plugin Name:       Kompas ID Branding
  * Plugin URI:        
- * Description:       Add General Footer to Kompas-ID Multisite
+ * Description:       Add KOMPAS.ID Branding to KOMPAS.ID Network Site 
  * Version:           1.0.0
  * Author:            Gregorius Andito Herjuno
  * Author URI:        https://kompas.id

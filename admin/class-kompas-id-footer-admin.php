@@ -98,7 +98,6 @@ class Kompas_Id_Footer_Admin {
 		 
 		$dev_mode		=	strpos( get_home_url(), 'kompas-wp-multimedia.c9users.io' );
 		$root_static	=	$dev_mode ? get_template_directory_uri() : 'https://assets.kompas.id/wp-content/themes/mumed_kompas_dot_id_2016';
-		$theme			=	wp_get_theme();
 		
 	    wp_enqueue_script( 'kompas_id_cdn-vuejs', $root_static . '/assets/libs/vue/vue.js', array(), '2.3.4', true );
 	    
@@ -122,7 +121,7 @@ class Kompas_Id_Footer_Admin {
 	}
 
 	public function add_sidebar_menu() {
-		add_options_page('General Footer Settings', 'General Footer', 'administrator', __FILE__, array( $this, 'footer_menu_init') );		
+		add_options_page('KOMPAS.ID Branding Settings', 'Kompas Branding', 'administrator', __FILE__, array( $this, 'footer_menu_init') );		
 	}	
 	
 	public function footer_menu_init() {
@@ -149,7 +148,5 @@ class Kompas_Id_Footer_Admin {
 		register_setting( 'kompas-id-footer-settings-group', 'kompas_id_footer_right_hex_color' );
 		register_setting( 'kompas-id-footer-settings-group', 'kompas_id_footer_width' );
 	}	
-	
-	
 
 }

@@ -175,7 +175,11 @@
 	                        </dl>
 	                    </div>
 	                </div>
-	                <div class="page-footer-logo"><a class="kompas-link-block kompas-text-center" href="https://kompas.id" title="Harian Kompas"><img class="page-header-nameplate-logo-image" src="<?php echo plugin_dir_url(dirname(__FILE__)) ?>img/logos/logo_kompas_footer.png" alt="Harian Kompas"></a></div>
+	                <div class="page-footer-logo">
+	                	<a class="kompas-link-block kompas-text-center" href="https://kompas.id" title="Harian Kompas">
+	                		<img class="kompas-footer-logo-height" src="<?php echo plugin_dir_url(dirname(__FILE__)) ?>img/logos/kompas-footer-logo.svg" alt="Harian Kompas">
+                		</a>
+            		</div>
 	            </div>
 	        </div>
 	    </div>
