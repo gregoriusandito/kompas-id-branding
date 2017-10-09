@@ -175,7 +175,7 @@
 	                        </dl>
 	                    </div>
 	                </div>
-	                <div class="page-footer-logo">
+	                <div class="page-footer-logo kompas-pad-right-20">
 	                	<a class="kompas-link-block kompas-text-center" href="https://kompas.id" title="Harian Kompas">
 	                		<img class="kompas-footer-logo-height" src="<?php echo plugin_dir_url(dirname(__FILE__)) ?>img/logos/kompas-footer-logo.svg" alt="Harian Kompas">
                 		</a>
