@@ -76,6 +76,7 @@ class Kompas_Id_Footer_Public {
 		 */
 
 		wp_enqueue_style( $this->kompas_id_footer, plugin_dir_url( __FILE__ ) . 'css/kompas-id-footer-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->kompas_id_footer.'-font-sans', 'https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i' );
 
 	}
 
@@ -164,6 +165,10 @@ class Kompas_Id_Footer_Public {
 	}	
 	
 	private function get_options_raw_data() {
+		/**
+		 * Description: Get all footer raw data from database using wpdb
+		 * Documentation: https://codex.wordpress.org/Class_Reference/wpdb
+		 */
 		global $wpdb;
         
         $main_db = $wpdb->base_prefix.'options';
@@ -178,6 +183,10 @@ class Kompas_Id_Footer_Public {
 	}
 	
 	private function get_all_options_number_of_value( $raw_data, $options_name = array() ) {
+		/**
+		 * Description: Count number of each options
+		 * Example: Kompas have 4 social media (Facebook, Twitter, Instagram, Youtube)
+		 */
 		foreach( $raw_data as $data ) :
 			if( in_array( $data->option_name, $options_name ) ) :
 				$options_value[]	=	$data->option_value;
