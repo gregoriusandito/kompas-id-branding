@@ -1454,7 +1454,7 @@
 .page-footer-credit-nav-list .menu-item:last-child { margin-right: 0; border-right: none; }
 .page-footer-credit-nav-list .menu-item:last-child::after { content: ''; }
 .page-footer-credit-nav-list a { color: #ccc; }
-.page-footer-credit-nav-list a:hover { text-decoration: underline; }
+.page-footer-credit-nav-list a:hover { color: #ccc; text-decoration: underline; }
 
 .page-footer-credit-wrapper { line-height: 1; }
 
