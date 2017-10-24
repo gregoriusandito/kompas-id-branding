@@ -29,7 +29,6 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
-
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-plugin-name-activator.php
@@ -67,9 +66,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-kompas-id-footer.php';
  * @since    1.0.0
  */
 function run_kompas_id_footer() {
-
-	$plugin = new Kompas_Id_Footer();
-	$plugin->run();
-
+	if ( is_multisite() && get_current_blog_id() != 1 ) :
+		$plugin = new Kompas_Id_Footer();
+		$plugin->run();
+	endif;	
 }
+
 run_kompas_id_footer();
