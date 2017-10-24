@@ -66,7 +66,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-kompas-id-footer.php';
  * @since    1.0.0
  */
 function run_kompas_id_footer() {
-	if ( is_multisite() && get_current_blog_id() != 1 ) :
+	if ( is_multisite() && ( get_current_blog_id() != 1 ) ) :
 		$plugin = new Kompas_Id_Footer();
 		$plugin->run();
 	endif;	
