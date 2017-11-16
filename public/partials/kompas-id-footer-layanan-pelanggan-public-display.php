@@ -1,5 +1,5 @@
 <!-- START: NEW FOOTER-->
-<footer class="kompas-position-relative">
+<footer class="kompas-position-relative kompas-branding-footer">
 	<?php if ( get_option('kompas_id_footer_general_layanan_pelanggan') == "on" ) : ?>
 	    <div class="kompas-border-separator-bottom"></div>
 	    <!-- START: PAGE FOOTER-CONTACT-->
@@ -17,7 +17,7 @@
 						<?php endif; ?>  
 						>
 	                        <div class="kompas-large-3 kompas-medium-3 kompas-columns kompas-mobile-pad-bottom-20 kompas-padding-10-auto">
-	                            <div class="kompas-font-weight-400 kompas-line-height-2">
+	                            <div class="kompas-font-weight-400 kompas-line-height-2 kompas-font-16">
 	                            	<span class="kompas-font-weight-700">LAYANAN </span>PELANGGAN
 	                            	<i class="fa fa-angle-right kompas-pad-left-30 kompas-font-gray kompas-font-20" aria-hidden="true"></i></div>
 	                        </div>
@@ -29,7 +29,7 @@
 	                                        <div class="kompas-page-footer-profile-def-description kompas-pad-left-15 kompas-pad-right-15 kompas-mobile-pad-left-right-0">
 	                                        	<a class="page-footer-cs-link" href="tel:<?php echo preg_replace( '/\s+/', '', $footer_custom_support_telephone ) ?>">
 	                                                <div class="page-footer-profile-def-description-icon kompas-font-24 kompas-line-height-1">
-	                                                	<i class="fa fa-phone v-align-middle" aria-hidden="true"></i>
+	                                                	<i class="fa fa-phone kompas-v-align-middle" aria-hidden="true"></i>
 	                                            	</div>
 	                                                <div class="page-footer-profile-def-description-text kompas-line-height-1-4">
 	                                                	<span class="page-footer-cs-term">KOMPAS KRING</span>

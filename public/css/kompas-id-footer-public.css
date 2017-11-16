@@ -1453,8 +1453,8 @@
 .page-footer-credit-nav-list .menu-item::after { color: #fff; content: ' '; font-size: 0.75rem; }
 .page-footer-credit-nav-list .menu-item:last-child { margin-right: 0; border-right: none; }
 .page-footer-credit-nav-list .menu-item:last-child::after { content: ''; }
-.page-footer-credit-nav-list a { color: #ccc; }
-.page-footer-credit-nav-list a:hover { color: #ccc; text-decoration: underline; }
+.page-footer-credit-nav-list a { color: #ccc !important; }
+.page-footer-credit-nav-list a:hover { color: #ccc !important; text-decoration: underline; }
 
 .page-footer-credit-wrapper { line-height: 1; }
 
@@ -1477,7 +1477,7 @@
 .page-footer-profile-social-accounts-item:last-child { margin-right: 0; }
 
 .page-footer-profile-social-accounts-link { color: #666; display: block; font-size: 2rem; line-height: 1; }
-.page-footer-profile-social-accounts-link .fa { -moz-transition: color 0.5s; -o-transition: color 0.5s; -webkit-transition: color 0.5s; transition: color 0.5s; }
+.page-footer-profile-social-accounts-link .fa { -moz-transition: color 0.5s; -o-transition: color 0.5s; -webkit-transition: color 0.5s; transition: color 0.5s; font-size: 1.5rem !important; }
 .page-footer-profile-social-accounts-link.new { font-size: 1.5rem; }
 .page-footer-profile-social-accounts-link.new:hover { color: #666; }
 .page-footer-profile-social-accounts-link.new:focus { color: #666; }
@@ -1500,7 +1500,7 @@
 
 .page-footer-profile-def-link p { line-height: 1.8; }
 .page-footer-profile-def-link a { color: #333; }
-.page-footer-profile-def-link a:hover { color: #333; border-bottom: solid 1px #00599A; }
+.page-footer-profile-def-link a:hover { color: #333 !important; border-bottom: solid 1px #00599A; }
 .page-footer-profile-def-link.board-name p { margin-bottom: 0.3125rem; }
 .page-footer-profile-def-link.board-name span { line-height: 1.8; font-size: 0.8125rem; display: block; }
 
@@ -1519,6 +1519,9 @@
 .page-footer-cs-link:hover .page-footer-cs-term { color: #000; }
 
 /*--------------------------------new footer-------------------------------------------*/
+.kompas-branding-footer dl, .kompas-branding-footer dt, .kompas-branding-footer dd, .kompas-branding-footer ul { margin: 0; padding: 0; }
+.kompas-branding-footer ul, .kompas-branding-footer ol, .kompas-branding-footer dl { list-style-position: outside; line-height: 1.6; }
+
 .kompas-border-separator-bottom { border-bottom: solid thin #ddd; }
 
 .kompas-text-gray { color: #666 !important; }
@@ -1532,6 +1535,12 @@
 .kompas-text-center { text-align: center; }
 
 .kompas-text-white { color: #fff !important; }
+.kompas-text-white:hover { color: #fff !important; }
+.kompas-text-white:visited { color: #fff !important; }
+
+.kompas-text-black { color: #333 !important; }
+.kompas-text-black:hover { color: #333 !important; }
+.kompas-text-black:visited { color: #333 !important; }
 
 .kompas-position-relative { position: relative; }
 
@@ -1599,6 +1608,8 @@
 /*---EndPadding-----*/
 .kompas-font-12 { font-size: 0.75rem !important; }
 
+.kompas-font-16 { font-size: 1rem !important; }
+
 .kompas-font-20 { font-size: 1.25rem; }
 
 .kompas-font-24 { font-size: 1.5rem; }
@@ -1612,6 +1623,8 @@
 .kompas-font-weight-400 { font-weight: 400 !important; }
 
 .kompas-font-weight-700 { font-weight: 700 !important; }
+
+.kompas-page-footer-nameplate-logo-image { display: inline-block; max-height: 3.75rem; }
 
 .kompas-page-footer-profile-def-description { font-size: 0; }
 
@@ -1639,11 +1652,13 @@
 .kompas-page-footer-credit-nav .kompas-page-footer-credit-nav-list { display: inline-block; font-size: 0; list-style-type: none; margin: 0; padding: 0; vertical-align: top; }
 .kompas-page-footer-credit-nav .kompas-page-footer-credit-nav-list .menu-item { display: inline-block; font-size: 0.6875rem; margin-right: 0.3125rem; padding-right: 0.3125rem; border-right: solid 1px #666; line-height: 1; margin-bottom: 0.4375rem; }
 .kompas-page-footer-credit-nav .kompas-page-footer-credit-nav-list .menu-item:last-child { margin-right: 0; border-right: none; }
-.kompas-page-footer-credit-nav .kompas-page-footer-credit-nav-list .menu-item a { color: #ccc; }
+.kompas-page-footer-credit-nav .kompas-page-footer-credit-nav-list .menu-item a { color: #ccc !important; }
+.kompas-page-footer-credit-nav .kompas-page-footer-credit-nav-list .menu-item a:hover { color: #ccc !important; text-decoration: underline; }
+.kompas-page-footer-credit-nav .kompas-page-footer-credit-nav-list .menu-item a:visited { color: #ccc !important; }
 
-.kompas-page-footer-profile-contents p { font-size: 0.75rem; }
+.kompas-page-footer-profile-contents p { font-size: 0.75rem; line-height: 1.6; margin: 0 0 1rem 0; text-rendering: optimizeLegibility; }
 .kompas-page-footer-profile-contents .kompas-page-footer-profile-text { color: #666; font-size: 0.8125rem; line-height: 1.05625rem; }
-.kompas-page-footer-profile-contents .kompas-page-footer-profile-text p { line-height: 1.6; margin-bottom: 1rem; text-rendering: optimizeLegibility; }
+.kompas-page-footer-profile-contents .kompas-page-footer-profile-text p { line-height: 1.6; padding: 0; text-rendering: optimizeLegibility; margin: 0 0 1rem 0; }
 .kompas-page-footer-profile-contents .kompas-page-footer-profile-social-accounts { margin-top: 0; text-align: left; }
 .kompas-page-footer-profile-contents .kompas-page-footer-profile-social-accounts .kompas-page-footer-profile-social-accounts-list { display: inline-block; font-size: 0; list-style-type: none; margin: 0; vertical-align: top; }
 .kompas-page-footer-profile-contents .kompas-page-footer-profile-social-accounts .kompas-page-footer-profile-social-accounts-list .kompas-page-footer-profile-social-accounts-item { display: inline-block; margin-right: 0.625rem; vertical-align: top; }

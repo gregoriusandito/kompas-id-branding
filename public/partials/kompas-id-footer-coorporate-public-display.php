@@ -106,7 +106,7 @@
 	                                                    <div class="page-footer-profile-def-link">
 															<p>
 																<?php foreach($footer_custom_products as $custom_product) : ?>
-																	<a href="<?php echo $custom_product['kompas_theme_footer_custom_product_url'] ?>" title="<?php echo $custom_product['kompas_theme_footer_custom_product_name'] ?>" target="_blank"><?php echo $custom_product['kompas_theme_footer_custom_product_name'] ?></a><br>
+																	<a class="kompas-text-black" href="<?php echo $custom_product['kompas_theme_footer_custom_product_url'] ?>" title="<?php echo $custom_product['kompas_theme_footer_custom_product_name'] ?>" target="_blank"><?php echo $custom_product['kompas_theme_footer_custom_product_name'] ?></a><br>
 																<?php endforeach ?>
 															</p>
 	                                                    </div>
@@ -122,7 +122,7 @@
 	                                                    <div class="page-footer-profile-def-link">
 															<p>
 																<?php foreach($footer_custom_ads_products as $custom_ads_product) : ?>
-																	<a href="<?php echo $custom_ads_product['kompas_theme_footer_custom_ads_product_url'] ?>" title="<?php echo $custom_ads_product['kompas_theme_footer_custom_ads_product_name'] ?>" target="_blank"><?php echo $custom_ads_product['kompas_theme_footer_custom_ads_product_name'] ?></a><br>
+																	<a class="kompas-text-black" href="<?php echo $custom_ads_product['kompas_theme_footer_custom_ads_product_url'] ?>" title="<?php echo $custom_ads_product['kompas_theme_footer_custom_ads_product_name'] ?>" target="_blank"><?php echo $custom_ads_product['kompas_theme_footer_custom_ads_product_name'] ?></a><br>
 																<?php endforeach ?>
 															</p>
 	                                                    </div>
