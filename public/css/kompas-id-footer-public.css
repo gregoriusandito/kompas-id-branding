@@ -1521,6 +1521,7 @@
 /*--------------------------------new footer-------------------------------------------*/
 .kompas-branding-footer dl, .kompas-branding-footer dt, .kompas-branding-footer dd, .kompas-branding-footer ul { margin: 0; padding: 0; }
 .kompas-branding-footer ul, .kompas-branding-footer ol, .kompas-branding-footer dl { list-style-position: outside; line-height: 1.6; }
+.kompas-branding-footer dl dt { font-weight: bold; }
 
 .kompas-border-separator-bottom { border-bottom: solid thin #ddd; }
 
