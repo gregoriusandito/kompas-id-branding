@@ -1428,6 +1428,8 @@
 
 .sr-only-focusable:active, .sr-only-focusable:focus { position: static; width: auto; height: auto; margin: 0; overflow: visible; clip: auto; }
 
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; outline: 0; }
+
 .page-footer-background-gray { background-color: #eee; }
 
 .page-footer-background-royal-blue { background-color: #00599A; min-height: 23.75rem; }
@@ -1500,9 +1502,10 @@
 
 .page-footer-profile-def-link p { line-height: 1.8; }
 .page-footer-profile-def-link a { color: #333; }
-.page-footer-profile-def-link a:hover { color: #333 !important; border-bottom: solid 1px #00599A; }
+.page-footer-profile-def-link a:hover { color: #333; border-bottom: solid 1px #00599A; }
 .page-footer-profile-def-link.board-name p { margin-bottom: 0.3125rem; }
 .page-footer-profile-def-link.board-name span { line-height: 1.8; font-size: 0.8125rem; display: block; }
+.page-footer-profile-def-link .kompas-text-white:hover { text-decoration: underline; }
 
 .page-footer-profile-def-term { color: #666; font-size: 0.8125rem; text-transform: uppercase; }
 
@@ -1519,9 +1522,11 @@
 .page-footer-cs-link:hover .page-footer-cs-term { color: #000; }
 
 /*--------------------------------new footer-------------------------------------------*/
-.kompas-branding-footer dl, .kompas-branding-footer dt, .kompas-branding-footer dd, .kompas-branding-footer ul { margin: 0; padding: 0; }
+.kompas-branding-footer { display: block; }
+.kompas-branding-footer dl, .kompas-branding-footer dt, .kompas-branding-footer dd, .kompas-branding-footer ul, .kompas-branding-footer p { margin: 0; padding: 0; }
 .kompas-branding-footer ul, .kompas-branding-footer ol, .kompas-branding-footer dl { list-style-position: outside; line-height: 1.6; }
 .kompas-branding-footer dl dt { font-weight: bold; }
+.kompas-branding-footer a { text-decoration: none; }
 
 .kompas-border-separator-bottom { border-bottom: solid thin #ddd; }
 
